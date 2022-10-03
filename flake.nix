@@ -8,7 +8,7 @@
     {
       devShells.${system}.default =
         let
-          pythonPackages = ps: with ps; [ pwntools pycryptodome ];
+          pythonPackages = ps: with ps; [ pwntools pycryptodome z3 ];
         in
         pkgs.mkShell {
           packages = with pkgs; [
