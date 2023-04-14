@@ -8,13 +8,17 @@
     {
       devShells.${system}.default =
         let
-          pythonPackages = ps: with ps; [ pwntools pycryptodome z3 ];
+          pythonPackages = ps: with ps; [ pwntools pycryptodome z3 gmpy2 ];
         in
         pkgs.mkShell {
-          packages = with pkgs; [
-            (python3.withPackages pythonPackages)
-            (sage.override { requireSageTests = false; extraPythonPackages = pythonPackages; })
-          ];
+          _JAVA_AWT_WM_NONREPARENTING = 1;
+          packages = with pkgs;
+            [
+              ghidra
+              radare2
+              (python3.withPackages pythonPackages)
+              (sage.override { requireSageTests = false; extraPythonPackages = pythonPackages; })
+            ];
         };
     };
 }
