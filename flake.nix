@@ -1,5 +1,5 @@
 {
-  inputs.nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
+  inputs.nixpkgs.url = "github:nevivurn/nixpkgs/fix/sage-ecl";
   outputs = { self, nixpkgs }:
     let
       system = "x86_64-linux";
@@ -7,18 +7,16 @@
     in
     {
       devShells.${system}.default =
-        let
-          pythonPackages = ps: with ps; [ pwntools pycryptodome z3 gmpy2 ];
-        in
+        let pythonPackages = ps: with ps; [ gmpy2 numpy pwntools pycryptodome z3 ]; in
         pkgs.mkShell {
-          _JAVA_AWT_WM_NONREPARENTING = 1;
-          packages = with pkgs;
-            [
-              ghidra
-              radare2
-              (python3.withPackages pythonPackages)
-              (sage.override { requireSageTests = false; extraPythonPackages = pythonPackages; })
-            ];
+          buildInputs = with pkgs; [ gmp ];
+          packages = with pkgs; [
+            (python3.withPackages pythonPackages)
+            (sage.override { requireSageTests = false; extraPythonPackages = pythonPackages; })
+            ghidra
+            radare2
+          ];
+          env._JAVA_AWT_WM_NONREPARENTING = 1;
         };
     };
 }

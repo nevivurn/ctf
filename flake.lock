@@ -2,16 +2,16 @@
   "nodes": {
     "nixpkgs": {
       "locked": {
-        "lastModified": 1681389457,
-        "narHash": "sha256-Z6TRJ2aI1eRd+kICdrkNyL2aH7XKw8ogzLdtGz1Q9qI=",
-        "owner": "NixOS",
+        "lastModified": 1704192918,
+        "narHash": "sha256-XTv2dRdK7fqv8o6Kn9T7k9kISNP04/z+gmAH2nKJtqU=",
+        "owner": "nevivurn",
         "repo": "nixpkgs",
-        "rev": "c58e6fbf258df1572b535ac1868ec42faf7675dd",
+        "rev": "8e5b9d1f8b18e9d54d814c5b1bbcebf3ebbd3a87",
         "type": "github"
       },
       "original": {
-        "owner": "NixOS",
-        "ref": "nixpkgs-unstable",
+        "owner": "nevivurn",
+        "ref": "fix/sage-ecl",
         "repo": "nixpkgs",
         "type": "github"
       }
